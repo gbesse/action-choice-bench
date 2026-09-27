@@ -25,6 +25,17 @@ Python 3.11+; no external package required. / Python 3.11+ ; aucune dépendance 
 
 Deux états UI synthétiques et des prédictions JSON illustrent le format, la précision, l’abstention et le score de Brier. Ce jeu minimal ne prédit pas encore la réussite d’un agent navigateur complet.
 
+## Démo liée à CLM
+
+L’importeur accepte des réponses enregistrées au format [`POST /v1/rank` de CLM](https://github.com/Contrastive-LM/CLM#api-reference), enveloppées avec `case_id`. Il mappe chaque texte candidat à un identifiant d’action unique et peut s’abstenir sous un seuil :
+
+```bash
+python3 tool.py clm-demo
+python3 tool.py import-clm examples/cases.json examples/clm-rank-responses.json > predictions.json
+```
+
+Les réponses fournies sont synthétiques ; aucun modèle CLM n’est exécuté. Une probabilité de classement CLM n’est pas traitée comme une confiance calibrée de justesse : le score de Brier reste `null` pour cet import.
+
 ## Tests
 
 ```bash

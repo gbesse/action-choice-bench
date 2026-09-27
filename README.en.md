@@ -25,6 +25,17 @@ Python 3.11+; no external package required. / Python 3.11+ ; aucune dépendance 
 
 Two synthetic UI states and JSON predictions illustrate the format, accuracy, abstention and Brier score. This tiny set does not yet predict full browser-agent success.
 
+## CLM-related demo
+
+The importer accepts recorded responses in [CLM's `POST /v1/rank` format](https://github.com/Contrastive-LM/CLM#api-reference), wrapped with `case_id`. It maps each candidate text to a unique action ID and can abstain below a threshold:
+
+```bash
+python3 tool.py clm-demo
+python3 tool.py import-clm examples/cases.json examples/clm-rank-responses.json > predictions.json
+```
+
+The bundled responses are synthetic; no CLM model runs. A CLM ranking probability is not treated as calibrated correctness confidence, so the Brier score is `null` for this import.
+
 ## Tests
 
 ```bash
