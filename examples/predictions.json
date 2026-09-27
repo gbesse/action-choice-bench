@@ -1,0 +1,4 @@
+[
+  {"case_id":"delete-own-draft","choice":"shared","confidence":0.9},
+  {"case_id":"no-safe-action","choice":null,"confidence":0.8}
+]
